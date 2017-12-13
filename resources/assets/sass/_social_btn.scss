@@ -1,0 +1,52 @@
+@mixin btn-social($color-bg) {
+  $icon-spacing:        $input-btn-padding-x-sm;
+  $icon-border-fix:     $input-btn-padding-y;
+  $icon-border-fix-sm:  $input-btn-padding-y-sm;
+  $icon-border-fix-lg:  $input-btn-padding-y-lg;
+  @include button-variant($color-bg, $color-bg);
+
+  i,.fa {
+    margin-right: $icon-spacing;
+    padding-right: $icon-spacing;
+    position: relative;
+
+    &:before {
+      line-height: $input-btn-line-height;
+    }
+    &:after {
+      position: absolute;
+      right: 0;
+      top: (0 - $icon-border-fix);
+      bottom: (0 - $icon-border-fix);
+      content: '';
+      display: block;
+      width: 1px;
+      border-right: 1px solid darken($color-bg, 7.5%);
+    }
+  }
+
+  &.btn-lg {
+    i,.fa {
+      &:after {
+        top: (0 - $icon-border-fix-lg);
+        bottom: (0 - $icon-border-fix-lg);
+      }
+    }
+  }
+
+  &.btn-sm {
+    i,.fa {
+      &:after {
+        top: (0 - $icon-border-fix-sm);
+        bottom: (0 - $icon-border-fix-sm);
+      }
+    }
+  }
+}
+
+.btn-facebook      { @include btn-social(#3b5998); }
+.btn-google        { @include btn-social(#dd4b39); }
+.btn-instagram     { @include btn-social(#3f729b); }
+.btn-linkedin      { @include btn-social(#007bb6); }
+.btn-pinterest     { @include btn-social(#cb2027); }
+.btn-twitter       { @include btn-social(#55acee); }
